@@ -10,7 +10,7 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="login_route")
-     * @Template()
+     * @Template
      */
     public function loginAction()
     {
