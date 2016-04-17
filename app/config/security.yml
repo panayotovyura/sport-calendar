@@ -1,0 +1,25 @@
+security:
+    encoders:
+            SportBundle\Entity\User: plaintext
+
+    providers:
+        db_provider:
+            entity:
+                class: SportBundle:User
+                property: username
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        default:
+            anonymous: ~
+            http_basic: ~
+            form_login:
+                login_path: login_route
+                check_path: login_route
+            logout: ~
+
+    access_control:
+        - { path: ^/(en|ru)/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en|ru)/exercises, roles: ROLE_USER }

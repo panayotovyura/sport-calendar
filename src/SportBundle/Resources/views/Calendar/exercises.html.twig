@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'calendar.index.title'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'calendar.index.greetings'|trans({'%user%': app.user.username}) }}</h1>
+    <p>
+        {{ 'calendar.index.intro'|trans }}
+    </p>
+
+    {% set weekAgoCount = exercises['1_week_ago']|length %}
+    {% set todayCount = exercises['today']|length %}
+    {% set linesCount = exercises['2_weeks_ago']|length %}
+    {% set linesCount = todayCount > linesCount ? todayCount : linesCount %}
+    {% set linesCount = weekAgoCount > linesCount ? weekAgoCount : linesCount %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>{{ 'calendar.index.table.two_week'|trans }}</th>
+                <th>{{ 'calendar.index.table.one_week'|trans }}</th>
+                <th>{{ 'calendar.index.table.today'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in 0..linesCount-1 %}
+                <tr>
+                    {% if exercises['2_weeks_ago'][i] is defined %}
+                        <td>
+                            {{ exercises['2_weeks_ago'][i].description }} {{ exercises['2_weeks_ago'][i].weight }} X {{ exercises['2_weeks_ago'][i].count }}
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    {% if exercises['1_week_ago'][i] is defined %}
+                        <td>
+                            {{ exercises['1_week_ago'][i].description }} {{ exercises['1_week_ago'][i].weight }} X {{ exercises['1_week_ago'][i].count }}
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    {% if exercises['today'][i] is defined %}
+                        <td>
+                            {{ exercises['today'][i].description }} {{ exercises['today'][i].weight }} X {{ exercises['today'][i].count }}
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p>
+        <a href="{{ path('logout') }}">{{ 'calendar.index.logout'|trans }}</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+sport:
+    resource: "@SportBundle/Controller/"
+    type:     annotation
+    prefix:     /{_locale}
+    defaults: { _locale : en }
+    requirements:
+        _locale: en|ru
+
+logout:
+    path: /logout
+
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /en/exercises
+        permanent: true

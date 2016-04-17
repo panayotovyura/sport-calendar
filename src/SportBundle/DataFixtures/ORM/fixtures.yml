@@ -1,0 +1,13 @@
+SportBundle\Entity\User:
+    user{yura, vasia, petia}:
+        username: <current()>
+        password: asdf<current()>
+
+SportBundle\Entity\Exercise:
+    exercise{1..300}:
+        description: <randomElement(['Chest Press', 'Biceps Curl', 'Front Lunge', 'Pullover'])>
+        weight: <numberBetween(20, 200)>
+        count: <numberBetween(5, 15)>
+        date: <dateTimeBetween('-1 month', 'now')>
+        time: <dateTimeBetween('-1 month', 'now')>
+        user: '@user*'
