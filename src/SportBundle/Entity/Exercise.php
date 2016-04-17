@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="exercises")
  * @ORM\Entity()
+ *
+ * @SuppressWarnings("short")
  */
 class Exercise
 {

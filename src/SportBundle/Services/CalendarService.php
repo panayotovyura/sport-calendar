@@ -39,21 +39,18 @@ class CalendarService
         $twoWeeksAgo = $date->modify('2 weeks ago');
 
         $calendarResults = [
-            'today' =>
-                $this->exerciseRepository->findBy([
-                    'user' => $user,
-                    'date' => $date,
-                ]),
-            '1_week_ago' =>
-                $this->exerciseRepository->findBy([
-                    'user' => $user,
-                    'date' => $oneWeekAgo,
-                ]),
-            '2_weeks_ago' =>
-                $this->exerciseRepository->findBy([
-                    'user' => $user,
-                    'date' => $twoWeeksAgo,
-                ]),
+            'today' => $this->exerciseRepository->findBy([
+                'user' => $user,
+                'date' => $date,
+            ]),
+            '1_week_ago' => $this->exerciseRepository->findBy([
+                'user' => $user,
+                'date' => $oneWeekAgo,
+            ]),
+            '2_weeks_ago' =>$this->exerciseRepository->findBy([
+                'user' => $user,
+                'date' => $twoWeeksAgo,
+            ]),
         ];
 
         return $calendarResults;

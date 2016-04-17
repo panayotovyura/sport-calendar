@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="users")
  * @ORM\Entity()
+ *
+ * @SuppressWarnings("short")
  */
 class User implements UserInterface, \Serializable
 {
