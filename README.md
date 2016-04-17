@@ -1,7 +1,7 @@
 sport-calendar
 ==============
 
-A Symfony3 first test project for Levi9 training
+A Symfony3 second test project for Levi9 training
 
 Run project:
 
